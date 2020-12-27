@@ -1,0 +1,13 @@
+.control {
+  position: sticky;
+  color: seashell;
+  width: 100%;
+  bottom: 10px;
+}
+
+.control__button {
+  color: seashell;
+}
+.control__addControl {
+  text-align: center;
+}

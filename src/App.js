@@ -1,23 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import Task from './Task';
+import Control from './Control';
+import AddTask from './AddTask';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [taskList,setTaskList] = useState([{"id":1,"desciption":"Learn React"},{"id":2,"desciption":"Learn React"}]);
+  const [showAddNewTask,setShowAddNewTask] = useState(false);
+  
+  const addNewTask = (taskDescription) => {
+    setTaskList([...taskList,{id:taskList.length+1,desciption:taskDescription}]);
+    setShowAddNewTask(false);
+  }
+
+  const showAddTask = ()=>{
+    setShowAddNewTask(!showAddNewTask);
+  }
+
+  const handleRemove = (taskId)=>{
+    setTaskList(taskList.filter((task,index)=>{
+      return taskId !== task.id
+    }));
+  }
+
+  const handleCloseAddTask = () => {
+    setShowAddNewTask(false);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app__tasks">
+        {taskList.map((task) => <Task description={task.desciption} key={task.id} taskId={task.id} handleRemove={handleRemove} />)}
+      </div>
+      <Control handleShowAddTask={showAddTask}/>
+      {showAddNewTask && <AddTask handleNewAddTask={addNewTask} handleCloseAddTask={handleCloseAddTask}/>} 
     </div>
   );
 }

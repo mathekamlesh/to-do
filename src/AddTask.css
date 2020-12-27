@@ -1,0 +1,50 @@
+.addTask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: white;
+  top: 0;
+  text-align: center;
+}
+.addTask_overlay {
+  z-index: 1;
+  top: 0;
+  opacity: 0.75;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #303030;
+}
+.addTask__text {
+  opacity: 1;
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+.addTask__control {
+  top: 40%;
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+}
+.addTask__button {
+  margin: 10px;
+}
+.addTask__textInput {
+  width: 100%;
+  height: 100%;
+  color: #303030;
+  border: none;
+  resize: none;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-y: scroll;
+}
+.addTask__textInput:focus {
+  outline-width: 0;
+}
+.addTask__textInput::-webkit-scrollbar {
+  display: none;
+}
