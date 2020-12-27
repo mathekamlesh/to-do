@@ -5,7 +5,7 @@ import AddTask from './AddTask';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [taskList,setTaskList] = useState([{"id":1,"desciption":"Learn React"},{"id":2,"desciption":"Learn React"}]);
+  const [taskList,setTaskList] = useState([{"id":1,"desciption":"Learn React"},{"id":2,"desciption":"Learn NodeJS"}]);
   const [showAddNewTask,setShowAddNewTask] = useState(false);
   
   const addNewTask = (taskDescription) => {

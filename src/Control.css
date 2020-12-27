@@ -1,8 +1,9 @@
 .control {
+  z-index: 1;
   position: sticky;
   color: seashell;
   width: 100%;
-  bottom: 10px;
+  bottom: 20vh;
 }
 
 .control__button {

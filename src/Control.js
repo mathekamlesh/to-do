@@ -6,7 +6,7 @@ const Control = ({handleShowAddTask}) => {
     const styles =  {
           width: 100,
           height: 100,
-          fill:"#0134cc",
+          fill:"#ffffff",
       };
     const handleClick = () => {
         console.log("Clicked")
