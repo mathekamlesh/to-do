@@ -5,6 +5,7 @@
   color: white;
   top: 0;
   text-align: center;
+  transition: all 1 linear;
 }
 .addTask_overlay {
   z-index: 1;
@@ -14,6 +15,7 @@
   width: 100%;
   height: 100%;
   background-color: #303030;
+  transition: opacity 0.5s ease-in-out;
 }
 .addTask__text {
   opacity: 1;

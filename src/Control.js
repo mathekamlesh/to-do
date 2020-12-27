@@ -8,12 +8,7 @@ const Control = ({handleShowAddTask}) => {
           height: 100,
           fill:"#ffffff",
       };
-    const handleClick = () => {
-        console.log("Clicked")
-    }
-    const openAddControl = () => {
-
-    };
+    
     return ( 
         <div className='control'>
             <div className="control__addControl" onClick={handleShowAddTask}>
@@ -22,5 +17,5 @@ const Control = ({handleShowAddTask}) => {
         </div>
     );
 }
- 
+
 export default Control;
