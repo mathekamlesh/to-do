@@ -11,8 +11,8 @@ const Control = ({handleShowAddTask}) => {
     
     return ( 
         <div className='control'>
-            <div className="control__addControl" onClick={handleShowAddTask}>
-                <AddCircleIcon  fontSize="large" style={styles} />
+            <div className="control__addControl" >
+                <AddCircleIcon  fontSize="large" style={styles} onClick={handleShowAddTask} />
             </div>
         </div>
     );

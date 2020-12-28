@@ -3,13 +3,29 @@ import Task from './Task';
 import Control from './Control';
 import AddTask from './AddTask';
 import { useEffect, useState } from 'react';
+import TaskModel from './TaskModel.js';
 
 function App() {
-  const [taskList,setTaskList] = useState([{"id":1,"desciption":"Learn React"},{"id":2,"desciption":"Learn NodeJS"}]);
-  const [showAddNewTask,setShowAddNewTask] = useState(false);
+  const [taskList,setTaskList] = useState([]);
+  const [showAddNewTask,setShowAddNewTask] = useState(false);  
   
-  const addNewTask = (taskDescription) => {
-    setTaskList([...taskList,{id:taskList.length+1,desciption:taskDescription}]);
+  useEffect(()=>{
+    console.log("useEffect called");
+    TaskModel.getTaskList().then((res)=>{
+      console.log(res.data);
+      setTaskList(res.data);
+    }).catch((err)=>{
+      console.log(err)
+    });
+  },[]);
+  
+  const addNewTask = (task) => {    
+    TaskModel.addTask(task).then((res)=>{
+      console.log(res.data);
+      setTaskList([...taskList,...res.data.data]);
+    }).catch((err)=>{
+      console.log(err)
+    });
     setShowAddNewTask(false);
   }
 
@@ -18,9 +34,14 @@ function App() {
   }
 
   const handleRemove = (taskId)=>{
-    setTaskList(taskList.filter((task,index)=>{
-      return taskId !== task.id
-    }));
+    TaskModel.deleteTask(taskId).then((res)=>{
+      console.log(res.data);
+      setTaskList(taskList.filter((task,index)=>{
+        return taskId !== task._id
+      }));
+    }).catch((err)=>{
+      console.log(err)
+    });
   }
 
   const handleCloseAddTask = () => {
@@ -29,7 +50,7 @@ function App() {
   return (
     <div className="app">
       <div className="app__tasks">
-        {taskList.map((task) => <Task description={task.desciption} key={task.id} taskId={task.id} handleRemove={handleRemove} />)}
+        {taskList.map((task) => <Task description={task.description} key={task._id} taskId={task._id} handleRemove={handleRemove} />)}
       </div>
       <Control handleShowAddTask={showAddTask}/>
       {showAddNewTask && <AddTask handleNewAddTask={addNewTask} handleCloseAddTask={handleCloseAddTask}/>} 
