@@ -17,3 +17,9 @@
   align-content: center;
   color: white;
 }
+
+.app__loader {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+}

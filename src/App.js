@@ -4,25 +4,28 @@ import Control from './Control';
 import AddTask from './AddTask';
 import { useEffect, useState } from 'react';
 import TaskModel from './TaskModel.js';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function App() {
   const [taskList,setTaskList] = useState([]);
+  const [showLoader,setShowLoader] = useState(true);
   const [showAddNewTask,setShowAddNewTask] = useState(false);  
   
   useEffect(()=>{
     console.log("useEffect called");
     TaskModel.getTaskList().then((res)=>{
-      console.log(res.data);
+      setShowLoader(false)
       setTaskList(res.data);
     }).catch((err)=>{
       console.log(err)
     });
   },[]);
   
-  const addNewTask = (task) => {    
+  const addNewTask = (task) => {
+    setShowLoader(true);
     TaskModel.addTask(task).then((res)=>{
-      console.log(res.data);
       setTaskList([...taskList,...res.data.data]);
+      setShowLoader(false);
     }).catch((err)=>{
       console.log(err)
     });
@@ -34,11 +37,12 @@ function App() {
   }
 
   const handleRemove = (taskId)=>{
+    setShowLoader(true);
     TaskModel.deleteTask(taskId).then((res)=>{
-      console.log(res.data);
       setTaskList(taskList.filter((task,index)=>{
         return taskId !== task._id
       }));
+      setShowLoader(false);
     }).catch((err)=>{
       console.log(err)
     });
@@ -50,6 +54,7 @@ function App() {
   return (
     <div className="app">
       <div className="app__tasks">
+        {showLoader && <div className="app__loader"><CircularProgress /></div>}
         {taskList.map((task) => <Task description={task.description} key={task._id} taskId={task._id} handleRemove={handleRemove} />)}
       </div>
       <Control handleShowAddTask={showAddTask}/>
