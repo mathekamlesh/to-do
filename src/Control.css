@@ -1,9 +1,12 @@
 .control {
   z-index: 1;
-  position: sticky;
+  position: fixed;
+  text-align: center;
   color: seashell;
   width: 100%;
-  bottom: 20vh;
+  display: flex;
+  justify-content: space-around;
+  bottom: 1vh;
 }
 
 .control__button {

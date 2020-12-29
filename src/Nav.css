@@ -1,0 +1,12 @@
+.nav {
+  position: relative;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.nav__item {
+  margin: 0;
+  padding: 10px;
+}

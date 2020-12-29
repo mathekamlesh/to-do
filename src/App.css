@@ -1,6 +1,5 @@
 .app {
   background-image: url(milky-way-2695569_1920.jpg);
-  width: 400px;
   place-items: center;
   position: relative;
   height: 100vh;
@@ -11,11 +10,18 @@
 }
 
 .app__tasks {
-  padding: 20px;
-  height: 800px;
+  position: relative;
+  top: 20px;
   text-align: center;
   align-content: center;
   color: white;
+  overflow: scroll;
+  max-height: 80vh;
+  bottom: 30vh;
+}
+
+.app__tasks::-webkit-scrollbar {
+  display: none;
 }
 
 .app__loader {

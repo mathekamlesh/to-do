@@ -2,15 +2,18 @@ import './App.css';
 import Task from './Task';
 import Control from './Control';
 import AddTask from './AddTask';
+import Nav from './Nav';
 import { useEffect, useState } from 'react';
 import TaskModel from './TaskModel.js';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Account from './Account';
 
 function App() {
   const [taskList,setTaskList] = useState([]);
   const [showLoader,setShowLoader] = useState(true);
   const [showAddNewTask,setShowAddNewTask] = useState(false);  
-  
+  const [showAccount,setShowAccount] = useState(true);
+
   useEffect(()=>{
     console.log("useEffect called");
     TaskModel.getTaskList().then((res)=>{
@@ -53,12 +56,15 @@ function App() {
   }
   return (
     <div className="app">
+      <Nav/>
+      {showAccount && <Account />}
       <div className="app__tasks">
         {showLoader && <div className="app__loader"><CircularProgress /></div>}
         {taskList.map((task) => <Task description={task.description} key={task._id} taskId={task._id} handleRemove={handleRemove} />)}
       </div>
       <Control handleShowAddTask={showAddTask}/>
-      {showAddNewTask && <AddTask handleNewAddTask={addNewTask} handleCloseAddTask={handleCloseAddTask}/>} 
+      {showAddNewTask && <AddTask handleNewAddTask={addNewTask} handleCloseAddTask={handleCloseAddTask}/>}
+      
     </div>
   );
 }
