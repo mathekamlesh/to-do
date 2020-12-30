@@ -3,6 +3,7 @@
   place-items: center;
   position: relative;
   height: 100vh;
+  width: 400px;
   overflow: scroll;
 }
 .app::-webkit-scrollbar {
@@ -18,6 +19,7 @@
   overflow: scroll;
   max-height: 80vh;
   bottom: 30vh;
+  width: 100%;
 }
 
 .app__tasks::-webkit-scrollbar {
@@ -28,4 +30,5 @@
   position: absolute;
   top: 40%;
   width: 100%;
+  text-align: center;
 }

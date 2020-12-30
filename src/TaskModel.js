@@ -4,9 +4,9 @@ const axiosInstance = axios.create({
     baseURL:"https://mathekamlesh-to-do-backend.herokuapp.com/"
   })
 
-const getTaskList = ()=>{
+const getTaskList = (username)=>{
     return new Promise((resolve,reject)=>{
-        axiosInstance.get('task').then((res)=>{
+        axiosInstance.get(`task/${username}`).then((res)=>{
             resolve(res);
         }).catch((err)=>{
             reject(err)

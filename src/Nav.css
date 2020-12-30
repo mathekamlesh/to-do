@@ -10,3 +10,11 @@
   margin: 0;
   padding: 10px;
 }
+
+.nav__username {
+  padding-top: 10px;
+  font-size: 25px;
+  font-style: unset;
+  font-weight: 600;
+  color: rgb(210, 220, 230);
+}
